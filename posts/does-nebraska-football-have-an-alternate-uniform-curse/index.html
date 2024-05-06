@@ -188,8 +188,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The Nebraska Cornhuskers football team has a storied history. Most of the time, people think of the past when talking about the Huskers’ football legacy that is still stuck in the 90s. Nebraska football uniform history is also pretty storied as well.</p>
 <p>The Huskers’ alternate uniform history dates back to the 1966 Orange Bowl against the Alabama Crimson Tide. Nebraska decided to go away from their traditional white jersey and red pants look to an all-white look. Yes, this is when the dreaded all-white jersey originated from. The Huskers would go on and lose 33-7 to the Crimson Tide. There are two main types of alternate uniform Nebraska has worn in it’s history. You have the traditional alternate uniform that is a one-time use. The second type is the all-white with the traditional look.</p>
 <p><img src="images/image (1).png" class="img-fluid" style="width:100.0%"></p>
-<p>After the 1967 Orange Bowl, the Huskers didn’t wear all-white unifroms until the 1991 Citrus Bowl against the No.&nbsp;2 Georgia Tech Yellow Jackets. They thought this would be a good idea because it’s been a while since we wore all-white, let’s try it now. Well, things did not go well as the Yellow Jackets demolished the Huskers 45-21.</p>
-<p>After the 1967 Orange Bowl, the Huskers didn’t wear all-white unifroms until the 1991 Citrus Bowl against the No.&nbsp;2 Georgia Tech Yellow Jackets. They thought this would be a good idea because it’s been a while since they wore all-white, let’s try it now. Well, things did not go well as the Yellow Jackets demolished the Huskers 45-21.</p>
+<p>After the 1967 Orange Bowl, the Huskers didn’t wear all-white uniforms until the 1991 Citrus Bowl against the No.&nbsp;2 Georgia Tech Yellow Jackets. They thought this would be a good idea because it’s been a while since we wore all-white, let’s try it now. Well, things did not go well as the Yellow Jackets demolished the Huskers 45-21.</p>
+<p>After the 1967 Orange Bowl, the Huskers didn’t wear all-white uniforms until the 1991 Citrus Bowl against the No.&nbsp;2 Georgia Tech Yellow Jackets. They thought this would be a good idea because it’s been a while since they wore all-white, let’s try it now. Well, things did not go well as the Yellow Jackets demolished the Huskers 45-21.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -197,87 +197,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Updatedseasons <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Documents/SPMC 350 /Project2DataFiles/Updated.csv"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Alternate_Game_Logs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Documents/SPMC 350 /Project2DataFiles/Alternate_Game_Logs.csv"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Alternate <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Documents/SPMC 350 /Project2DataFiles/Alternate.csv"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Updatedseasons <span class="sc">|&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    Uniforms <span class="sc">==</span> <span class="st">"All-White"</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    Date, School, Opponent, Pts, Opp</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">Date=</span><span class="st">"Date"</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">School=</span><span class="st">"School"</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">Opponent=</span><span class="st">"Opponent"</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">Pts=</span><span class="st">"Points"</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">Opp=</span> <span class="st">"Opp Points"</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Nebraska potentially has an all-white uniform curse"</span>,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"The Huskers seem to always lose while wearing all white uniforms against good opponents. Hence why people think Nebraska has a curse when the all white uniforms are worn. Note: Numbers in () mean AP Poll ranking."</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"**By:** Dylan Jurgens  |  **Source:** [Sports Reference CFB](https://www.https://www.sports-reference.com/cfb/)"</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>   <span class="fu">tab_style</span>(</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">14</span>)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>   <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"#E41C38"</span>),</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#FFFFFF"</span>)</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> Date <span class="sc">==</span> <span class="st">"Nov 14 1992"</span>)</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>   <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"black"</span>),</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#E41C38"</span>)</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> Date <span class="sc">==</span> <span class="st">"Nov 15 2014"</span>)</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Updated_Alternate_Uniforms <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Documents/SPMC 350 /Project2DataFiles/Updated_Alternate_Uniforms.csv"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Alternate <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Documents/SPMC 350 /Project2DataFiles/Alternate.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    Uniforms <span class="sc">==</span> <span class="st">"All-White"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    Date, School, Opponent, Pts, Opp</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">Date=</span><span class="st">"Date"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">School=</span><span class="st">"School"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">Opponent=</span><span class="st">"Opponent"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">Pts=</span><span class="st">"Points"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">Opp=</span> <span class="st">"Opp Points"</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Nebraska potentially has an all-white uniform curse"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"The Huskers seem to always lose while wearing all white uniforms against good opponents. Hence why people think Nebraska has a curse when the all white uniforms are worn. Note: Numbers in () mean AP Poll ranking."</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"**By:** Dylan Jurgens  |  **Source:** [Sports Reference CFB](https://www.https://www.sports-reference.com/cfb/)"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>   <span class="fu">tab_style</span>(</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">14</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>   <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"#E41C38"</span>),</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#FFFFFF"</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> Date <span class="sc">==</span> <span class="st">"Nov 14 1992"</span>)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>   <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#E41C38"</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> Date <span class="sc">==</span> <span class="st">"Nov 15 2014"</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
-<div id="gyaiqsllnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gyaiqsllnt table {
+<div id="cutqxazpnc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cutqxazpnc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gyaiqsllnt thead, #gyaiqsllnt tbody, #gyaiqsllnt tfoot, #gyaiqsllnt tr, #gyaiqsllnt td, #gyaiqsllnt th {
+#cutqxazpnc thead, #cutqxazpnc tbody, #cutqxazpnc tfoot, #cutqxazpnc tr, #cutqxazpnc td, #cutqxazpnc th {
   border-style: none;
 }
 
-#gyaiqsllnt p {
+#cutqxazpnc p {
   margin: 0;
   padding: 0;
 }
 
-#gyaiqsllnt .gt_table {
+#cutqxazpnc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -303,12 +302,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_caption {
+#cutqxazpnc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gyaiqsllnt .gt_title {
+#cutqxazpnc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -320,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#gyaiqsllnt .gt_subtitle {
+#cutqxazpnc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -332,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#gyaiqsllnt .gt_heading {
+#cutqxazpnc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -344,13 +343,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_bottom_border {
+#cutqxazpnc .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_col_headings {
+#cutqxazpnc .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -365,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_col_heading {
+#cutqxazpnc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#gyaiqsllnt .gt_column_spanner_outer {
+#cutqxazpnc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -397,15 +396,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#gyaiqsllnt .gt_column_spanner_outer:first-child {
+#cutqxazpnc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gyaiqsllnt .gt_column_spanner_outer:last-child {
+#cutqxazpnc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gyaiqsllnt .gt_column_spanner {
+#cutqxazpnc .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -417,11 +416,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#gyaiqsllnt .gt_spanner_row {
+#cutqxazpnc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gyaiqsllnt .gt_group_heading {
+#cutqxazpnc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -447,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#gyaiqsllnt .gt_empty_group_heading {
+#cutqxazpnc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -462,15 +461,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#gyaiqsllnt .gt_from_md > :first-child {
+#cutqxazpnc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gyaiqsllnt .gt_from_md > :last-child {
+#cutqxazpnc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gyaiqsllnt .gt_row {
+#cutqxazpnc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -489,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#gyaiqsllnt .gt_stub {
+#cutqxazpnc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -502,7 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gyaiqsllnt .gt_stub_row_group {
+#cutqxazpnc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -516,15 +515,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#gyaiqsllnt .gt_row_group_first td {
+#cutqxazpnc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gyaiqsllnt .gt_row_group_first th {
+#cutqxazpnc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gyaiqsllnt .gt_summary_row {
+#cutqxazpnc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -534,16 +533,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gyaiqsllnt .gt_first_summary_row {
+#cutqxazpnc .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_first_summary_row.thick {
+#cutqxazpnc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gyaiqsllnt .gt_last_summary_row {
+#cutqxazpnc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_grand_summary_row {
+#cutqxazpnc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -563,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gyaiqsllnt .gt_first_grand_summary_row {
+#cutqxazpnc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_last_grand_summary_row_top {
+#cutqxazpnc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -583,11 +582,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_striped {
+#cutqxazpnc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gyaiqsllnt .gt_table_body {
+#cutqxazpnc .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -596,7 +595,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_footnotes {
+#cutqxazpnc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -610,7 +609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_footnote {
+#cutqxazpnc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -619,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gyaiqsllnt .gt_sourcenotes {
+#cutqxazpnc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -633,7 +632,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#gyaiqsllnt .gt_sourcenote {
+#cutqxazpnc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -641,63 +640,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#gyaiqsllnt .gt_left {
+#cutqxazpnc .gt_left {
   text-align: left;
 }
 
-#gyaiqsllnt .gt_center {
+#cutqxazpnc .gt_center {
   text-align: center;
 }
 
-#gyaiqsllnt .gt_right {
+#cutqxazpnc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gyaiqsllnt .gt_font_normal {
+#cutqxazpnc .gt_font_normal {
   font-weight: normal;
 }
 
-#gyaiqsllnt .gt_font_bold {
+#cutqxazpnc .gt_font_bold {
   font-weight: bold;
 }
 
-#gyaiqsllnt .gt_font_italic {
+#cutqxazpnc .gt_font_italic {
   font-style: italic;
 }
 
-#gyaiqsllnt .gt_super {
+#cutqxazpnc .gt_super {
   font-size: 65%;
 }
 
-#gyaiqsllnt .gt_footnote_marks {
+#cutqxazpnc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gyaiqsllnt .gt_asterisk {
+#cutqxazpnc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gyaiqsllnt .gt_indent_1 {
+#cutqxazpnc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gyaiqsllnt .gt_indent_2 {
+#cutqxazpnc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gyaiqsllnt .gt_indent_3 {
+#cutqxazpnc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gyaiqsllnt .gt_indent_4 {
+#cutqxazpnc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gyaiqsllnt .gt_indent_5 {
+#cutqxazpnc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -755,70 +754,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right" headers="Opp" style="background-color: #E41C38; color: #FFFFFF">19</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Date">Nov 23 2007</td>
-<td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
-<td class="gt_row gt_left gt_striped" headers="Opponent">Colorado</td>
-<td class="gt_row gt_right gt_striped" headers="Pts">51</td>
-<td class="gt_row gt_right gt_striped" headers="Opp">65</td>
+<td class="gt_row gt_left gt_striped" headers="Date">Sep 14 2002</td>
+<td class="gt_row gt_left gt_striped" headers="School">(8) Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">Penn State</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">7</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">40</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Date">Sep 13 2014</td>
-<td class="gt_row gt_left" headers="School">Nebraska</td>
-<td class="gt_row gt_left" headers="Opponent">Fresno State</td>
-<td class="gt_row gt_right" headers="Pts">55</td>
-<td class="gt_row gt_right" headers="Opp">19</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Date">Oct 18 2014</td>
-<td class="gt_row gt_left gt_striped" headers="School">(19) Nebraska</td>
-<td class="gt_row gt_left gt_striped" headers="Opponent">Northwestern</td>
-<td class="gt_row gt_right gt_striped" headers="Pts">38</td>
-<td class="gt_row gt_right gt_striped" headers="Opp">17</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Date" style="background-color: #000000; color: #E41C38">Nov 15 2014</td>
-<td class="gt_row gt_left" headers="School" style="background-color: #000000; color: #E41C38">(11) Nebraska</td>
-<td class="gt_row gt_left" headers="Opponent" style="background-color: #000000; color: #E41C38">(22) Wisconsin</td>
-<td class="gt_row gt_right" headers="Pts" style="background-color: #000000; color: #E41C38">24</td>
-<td class="gt_row gt_right" headers="Opp" style="background-color: #000000; color: #E41C38">59</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Date">Dec 27 2014</td>
-<td class="gt_row gt_left gt_striped" headers="School">(25) Nebraska</td>
-<td class="gt_row gt_left gt_striped" headers="Opponent">(24) USC</td>
-<td class="gt_row gt_right gt_striped" headers="Pts">42</td>
-<td class="gt_row gt_right gt_striped" headers="Opp">45</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Date">Sep 19 2015</td>
-<td class="gt_row gt_left" headers="School">Nebraska</td>
-<td class="gt_row gt_left" headers="Opponent">Miami (FL)</td>
-<td class="gt_row gt_right" headers="Pts">33</td>
+<td class="gt_row gt_left" headers="Date">Sep 28 2002</td>
+<td class="gt_row gt_left" headers="School">(20) Nebraska</td>
+<td class="gt_row gt_left" headers="Opponent">(19) Iowa State</td>
+<td class="gt_row gt_right" headers="Pts">14</td>
 <td class="gt_row gt_right" headers="Opp">36</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Date">Oct 3 2015</td>
+<td class="gt_row gt_left gt_striped" headers="Date">Oct 19 2002</td>
 <td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
-<td class="gt_row gt_left gt_striped" headers="Opponent">Illinois</td>
-<td class="gt_row gt_right gt_striped" headers="Pts">13</td>
-<td class="gt_row gt_right gt_striped" headers="Opp">14</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">Oklahoma State</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">21</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">24</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Date">Oct 17 2015</td>
+<td class="gt_row gt_left" headers="Date">Oct 26 2002</td>
 <td class="gt_row gt_left" headers="School">Nebraska</td>
-<td class="gt_row gt_left" headers="Opponent">Minnesota</td>
-<td class="gt_row gt_right" headers="Pts">48</td>
-<td class="gt_row gt_right" headers="Opp">25</td>
+<td class="gt_row gt_left" headers="Opponent">Texas A&amp;M</td>
+<td class="gt_row gt_right" headers="Pts">38</td>
+<td class="gt_row gt_right" headers="Opp">31</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Date">Dec 30 2016</td>
-<td class="gt_row gt_left gt_striped" headers="School">(24) Nebraska</td>
-<td class="gt_row gt_left gt_striped" headers="Opponent">Tennessee</td>
-<td class="gt_row gt_right gt_striped" headers="Pts">24</td>
-<td class="gt_row gt_right gt_striped" headers="Opp">38</td>
+<td class="gt_row gt_left gt_striped" headers="Date">Nov 16 2002</td>
+<td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">(11) Kansas State</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">13</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">49</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Date">Nov 23 2007</td>
+<td class="gt_row gt_left" headers="School">Nebraska</td>
+<td class="gt_row gt_left" headers="Opponent">Colorado</td>
+<td class="gt_row gt_right" headers="Pts">51</td>
+<td class="gt_row gt_right" headers="Opp">65</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Date">Sep 13 2014</td>
+<td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">Fresno State</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">55</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">19</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Date">Oct 18 2014</td>
+<td class="gt_row gt_left" headers="School">(19) Nebraska</td>
+<td class="gt_row gt_left" headers="Opponent">Northwestern</td>
+<td class="gt_row gt_right" headers="Pts">38</td>
+<td class="gt_row gt_right" headers="Opp">17</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Date" style="background-color: #000000; color: #E41C38">Nov 15 2014</td>
+<td class="gt_row gt_left gt_striped" headers="School" style="background-color: #000000; color: #E41C38">(11) Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent" style="background-color: #000000; color: #E41C38">(22) Wisconsin</td>
+<td class="gt_row gt_right gt_striped" headers="Pts" style="background-color: #000000; color: #E41C38">24</td>
+<td class="gt_row gt_right gt_striped" headers="Opp" style="background-color: #000000; color: #E41C38">59</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Date">Dec 27 2014</td>
+<td class="gt_row gt_left" headers="School">(25) Nebraska</td>
+<td class="gt_row gt_left" headers="Opponent">(24) USC</td>
+<td class="gt_row gt_right" headers="Pts">42</td>
+<td class="gt_row gt_right" headers="Opp">45</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Date">Sep 19 2015</td>
+<td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">Miami (FL)</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">33</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">36</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Date">Oct 3 2015</td>
+<td class="gt_row gt_left" headers="School">Nebraska</td>
+<td class="gt_row gt_left" headers="Opponent">Illinois</td>
+<td class="gt_row gt_right" headers="Pts">13</td>
+<td class="gt_row gt_right" headers="Opp">14</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Date">Oct 17 2015</td>
+<td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">Minnesota</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">48</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">25</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Date">Dec 30 2016</td>
+<td class="gt_row gt_left" headers="School">(24) Nebraska</td>
+<td class="gt_row gt_left" headers="Opponent">Tennessee</td>
+<td class="gt_row gt_right" headers="Pts">24</td>
+<td class="gt_row gt_right" headers="Opp">38</td>
 </tr>
 </tbody><tfoot class="gt_sourcenotes">
-<tr class="odd">
+<tr class="even">
 <td colspan="5" class="gt_sourcenote"><strong>By:</strong> Dylan Jurgens | <strong>Source:</strong> <a href="https://www.https://www.sports-reference.com/cfb/">Sports Reference CFB</a></td>
 </tr>
 </tfoot>
@@ -895,23 +929,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output-display">
 <div>
-<div id="zzdddsklcp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zzdddsklcp table {
+<div id="inixqzisik" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#inixqzisik table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zzdddsklcp thead, #zzdddsklcp tbody, #zzdddsklcp tfoot, #zzdddsklcp tr, #zzdddsklcp td, #zzdddsklcp th {
+#inixqzisik thead, #inixqzisik tbody, #inixqzisik tfoot, #inixqzisik tr, #inixqzisik td, #inixqzisik th {
   border-style: none;
 }
 
-#zzdddsklcp p {
+#inixqzisik p {
   margin: 0;
   padding: 0;
 }
 
-#zzdddsklcp .gt_table {
+#inixqzisik .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -937,12 +971,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_caption {
+#inixqzisik .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zzdddsklcp .gt_title {
+#inixqzisik .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -954,7 +988,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#zzdddsklcp .gt_subtitle {
+#inixqzisik .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -966,7 +1000,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#zzdddsklcp .gt_heading {
+#inixqzisik .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -978,13 +1012,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_bottom_border {
+#inixqzisik .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_col_headings {
+#inixqzisik .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -999,7 +1033,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_col_heading {
+#inixqzisik .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1019,7 +1053,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zzdddsklcp .gt_column_spanner_outer {
+#inixqzisik .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1031,15 +1065,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#zzdddsklcp .gt_column_spanner_outer:first-child {
+#inixqzisik .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zzdddsklcp .gt_column_spanner_outer:last-child {
+#inixqzisik .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zzdddsklcp .gt_column_spanner {
+#inixqzisik .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1051,11 +1085,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#zzdddsklcp .gt_spanner_row {
+#inixqzisik .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zzdddsklcp .gt_group_heading {
+#inixqzisik .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1081,7 +1115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#zzdddsklcp .gt_empty_group_heading {
+#inixqzisik .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1096,15 +1130,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#zzdddsklcp .gt_from_md > :first-child {
+#inixqzisik .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zzdddsklcp .gt_from_md > :last-child {
+#inixqzisik .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zzdddsklcp .gt_row {
+#inixqzisik .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1123,7 +1157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zzdddsklcp .gt_stub {
+#inixqzisik .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1136,7 +1170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzdddsklcp .gt_stub_row_group {
+#inixqzisik .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1150,15 +1184,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#zzdddsklcp .gt_row_group_first td {
+#inixqzisik .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zzdddsklcp .gt_row_group_first th {
+#inixqzisik .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zzdddsklcp .gt_summary_row {
+#inixqzisik .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1168,16 +1202,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzdddsklcp .gt_first_summary_row {
+#inixqzisik .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_first_summary_row.thick {
+#inixqzisik .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zzdddsklcp .gt_last_summary_row {
+#inixqzisik .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1187,7 +1221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_grand_summary_row {
+#inixqzisik .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1197,7 +1231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzdddsklcp .gt_first_grand_summary_row {
+#inixqzisik .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1207,7 +1241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_last_grand_summary_row_top {
+#inixqzisik .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1217,11 +1251,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_striped {
+#inixqzisik .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zzdddsklcp .gt_table_body {
+#inixqzisik .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1230,7 +1264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_footnotes {
+#inixqzisik .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1244,7 +1278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_footnote {
+#inixqzisik .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1253,7 +1287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzdddsklcp .gt_sourcenotes {
+#inixqzisik .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1267,7 +1301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zzdddsklcp .gt_sourcenote {
+#inixqzisik .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1275,63 +1309,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zzdddsklcp .gt_left {
+#inixqzisik .gt_left {
   text-align: left;
 }
 
-#zzdddsklcp .gt_center {
+#inixqzisik .gt_center {
   text-align: center;
 }
 
-#zzdddsklcp .gt_right {
+#inixqzisik .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zzdddsklcp .gt_font_normal {
+#inixqzisik .gt_font_normal {
   font-weight: normal;
 }
 
-#zzdddsklcp .gt_font_bold {
+#inixqzisik .gt_font_bold {
   font-weight: bold;
 }
 
-#zzdddsklcp .gt_font_italic {
+#inixqzisik .gt_font_italic {
   font-style: italic;
 }
 
-#zzdddsklcp .gt_super {
+#inixqzisik .gt_super {
   font-size: 65%;
 }
 
-#zzdddsklcp .gt_footnote_marks {
+#inixqzisik .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zzdddsklcp .gt_asterisk {
+#inixqzisik .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zzdddsklcp .gt_indent_1 {
+#inixqzisik .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zzdddsklcp .gt_indent_2 {
+#inixqzisik .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zzdddsklcp .gt_indent_3 {
+#inixqzisik .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zzdddsklcp .gt_indent_4 {
+#inixqzisik .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zzdddsklcp .gt_indent_5 {
+#inixqzisik .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1438,28 +1472,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td class="gt_row gt_right gt_striped" headers="Opp">38</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Date">Sep 11 2021</td>
+<td class="gt_row gt_left" headers="Date">Nov 21 2020</td>
 <td class="gt_row gt_left" headers="School">Nebraska</td>
-<td class="gt_row gt_left" headers="Opponent">Buffalo</td>
-<td class="gt_row gt_right" headers="Pts">28</td>
-<td class="gt_row gt_right" headers="Opp">3</td>
+<td class="gt_row gt_left" headers="Opponent">Illinois</td>
+<td class="gt_row gt_right" headers="Pts">23</td>
+<td class="gt_row gt_right" headers="Opp">41</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Date" style="background-color: #000000; color: #FFFFFF">Sep 10 2022</td>
-<td class="gt_row gt_left gt_striped" headers="School" style="background-color: #000000; color: #FFFFFF">Nebraska</td>
-<td class="gt_row gt_left gt_striped" headers="Opponent" style="background-color: #000000; color: #FFFFFF">Georgia Southern</td>
-<td class="gt_row gt_right gt_striped" headers="Pts" style="background-color: #000000; color: #FFFFFF">42</td>
-<td class="gt_row gt_right gt_striped" headers="Opp" style="background-color: #000000; color: #FFFFFF">45</td>
+<td class="gt_row gt_left gt_striped" headers="Date">Sep 11 2021</td>
+<td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">Buffalo</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">28</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">3</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Date">Oct 21 2023</td>
-<td class="gt_row gt_left" headers="School">Nebraska</td>
-<td class="gt_row gt_left" headers="Opponent">Northwestern</td>
-<td class="gt_row gt_right" headers="Pts">17</td>
-<td class="gt_row gt_right" headers="Opp">9</td>
+<td class="gt_row gt_left" headers="Date" style="background-color: #000000; color: #FFFFFF">Sep 10 2022</td>
+<td class="gt_row gt_left" headers="School" style="background-color: #000000; color: #FFFFFF">Nebraska</td>
+<td class="gt_row gt_left" headers="Opponent" style="background-color: #000000; color: #FFFFFF">Georgia Southern</td>
+<td class="gt_row gt_right" headers="Pts" style="background-color: #000000; color: #FFFFFF">42</td>
+<td class="gt_row gt_right" headers="Opp" style="background-color: #000000; color: #FFFFFF">45</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Date">Oct 21 2023</td>
+<td class="gt_row gt_left gt_striped" headers="School">Nebraska</td>
+<td class="gt_row gt_left gt_striped" headers="Opponent">Northwestern</td>
+<td class="gt_row gt_right gt_striped" headers="Pts">17</td>
+<td class="gt_row gt_right gt_striped" headers="Opp">9</td>
 </tr>
 </tbody><tfoot class="gt_sourcenotes">
-<tr class="even">
+<tr class="odd">
 <td colspan="5" class="gt_sourcenote"><strong>By:</strong> Dylan Jurgens | <strong>Source:</strong> <a href="https://www.https://www.sports-reference.com/cfb/">Sports Reference CFB</a></td>
 </tr>
 </tfoot>
@@ -1470,13 +1511,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>In 2009, Nebraska wore an a commerative 1962 throwback jersey against the Lousiana Ragin Cajuns and it wasn’t a game for the Ragin Cajuns. The Huskers put up 55 points to Lousiana’s 0 points. Nebraska did not wear an alternate uniform again until 2012, where Adidas released alternates for both Nebraska and Wisconsin. Despite being down 17 in the second half, the Huskers came back and defeated the Badgers 30-27. However, things wouldn’t be as nice in 2013.</p>
-<p>Nebraska started off the 2013 season with two wins over the Wyoming Cowboys and Southern Mississippi Golden Eagles before facing off with the UCLA Bruins. Adidas and the Huskers annoucned an alternate unifrom with a black jersey with white pants that had black stripes on it for the game. Nebraska started strong against the Bruins held a 21-3 lead over the Bruins in the second quarter before a monumental collapse by the Huskers. UCLA scored 38 unanswered points on Nebraska and the Huskers lost 21-41.</p>
-<p>Another blunder was in September of 2022. It was former head coach Scott Frost’s fifth season at Nebraska and the Huskers were looking at making their first bowl apperance since 2016. The Huskers had a week three matchup against Georgia Southern Eagles. Nebraska wore a 1983 throwback uniform to commemorate the 1983 football team coined as “The Scoring Explosion”. What a way to remember that season with a 42-45 loss to the Eagles, which led to Frost being fired the next day.</p>
+<p>In 2009, Nebraska wore an a commemorative 1962 throwback jersey against the Louisiana Ragin Cajuns and it wasn’t a game for the Ragin Cajuns. The Huskers put up 55 points to Louisiana’s 0 points. Nebraska did not wear an alternate uniform again until 2012, where Adidas released alternates for both Nebraska and Wisconsin. Despite being down 17 in the second half, the Huskers came back and defeated the Badgers 30-27. However, things wouldn’t be as nice in 2013.</p>
+<p>Nebraska started off the 2013 season with two wins over the Wyoming Cowboys and Southern Mississippi Golden Eagles before facing off with the UCLA Bruins. Adidas and the Huskers announced an alternate uniform with a black jersey with white pants that had black stripes on it for the game. Nebraska started strong against the Bruins held a 21-3 lead over the Bruins in the second quarter before a monumental collapse by the Huskers. UCLA scored 38 unanswered points on Nebraska and the Huskers lost 21-41.</p>
+<p><img src="images/image (2).jpg" class="img-fluid" style="width:100.0%"></p>
+<p>Another blunder was in September of 2022. It was former head coach Scott Frost’s fifth season at Nebraska and the Huskers were looking at making their first bowl appearance since 2016. The Huskers had a week three matchup against Georgia Southern Eagles. Nebraska wore a 1983 throwback uniform to commemorate the 1983 football team coined as “The Scoring Explosion”. What a way to remember that season with a 42-45 loss to the Eagles, which led to Frost being fired the next day.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>updatedregular <span class="ot">&lt;-</span> Updatedseasons <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>updatedregular <span class="ot">&lt;-</span> Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Uniforms<span class="sc">==</span><span class="st">"Regular"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pd =</span> <span class="fu">mean</span>(pd)</span>
@@ -1485,7 +1527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Uniforms =</span> <span class="st">"Regular"</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>updatedallwhite <span class="ot">&lt;-</span> Updatedseasons <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>updatedallwhite <span class="ot">&lt;-</span> Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Uniforms<span class="sc">==</span><span class="st">"All-White"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pd =</span> <span class="fu">mean</span>(pd)</span>
@@ -1494,7 +1536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Uniforms =</span> <span class="st">"All-White"</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>updatedalternate <span class="ot">&lt;-</span> Updatedseasons <span class="sc">|&gt;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>updatedalternate <span class="ot">&lt;-</span> Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Uniforms<span class="sc">==</span><span class="st">"Alternate"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Uniforms, pd) <span class="sc">|&gt;</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -1533,9 +1575,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Since 1966, Nebraska has a average point differential of over 15 while wearing Regular uniforms. This shows that Huskers have more success when just wearing the traditional red jersey with white pants at home and wearing a white jersey with red pants on the road. With alternate uniforms, Nebraska has a worse average point differential of just over 2 points while wearing an alternate uniform. Despite all of that, the worst is clearly all-white. When wearing all-white uniforms, the Huskers have an average point differential of under -2. Meaning Nebraska looses more while wearing all-white compared to alternate unifroms and traditional uniforms.</p>
-<p>This shouldn’t be a surprise though, as it has been discussed among Husker nation that there seems to be a curse when Nebraska wears all-white uniforms, especially in big games (I.e agaisnt 2014 Wisconsin).</p>
-<p>There has only been one Adidas alternate uniform that has been worn twice. This being the Blackshirts uniform that the Huskers wore in 2019 against the Indiana Hoosiers and in 2020 agains the Illinois Fighting Illini. And oh boy, these uniforms look awesome. However, Nebraska hasn’t won once while wearing these uniforms.</p>
+<p>Since 1966, Nebraska has a average point differential of over 15 while wearing Regular uniforms. This shows that Huskers have more success when just wearing the traditional red jersey with white pants at home and wearing a white jersey with red pants on the road. With alternate uniforms, Nebraska has a worse average point differential of just over 2 points while wearing an alternate uniform. Despite all of that, the worst is clearly all-white. When wearing all-white uniforms, the Huskers have an average point differential of under -2. Meaning Nebraska looses more while wearing all-white compared to alternate uniforms and traditional uniforms.</p>
+<p>This shouldn’t be a surprise though, as it has been discussed among Husker nation that there seems to be a curse when Nebraska wears all-white uniforms, especially in big games (I.e against 2014 Wisconsin).</p>
+<p>There has only been one Adidas alternate uniform that has been worn twice. This being the blackshirts uniform that the Huskers wore in 2019 against the Indiana Hoosiers and in 2020 against the Illinois Fighting Illini. And oh boy, these uniforms look awesome. However, Nebraska hasn’t won once while wearing these uniforms and haven’t wore the uniforms since then as well.</p>
+<p><img src="images/image (3).jpg" class="img-fluid" style="width:100.0%"></p>
+<p>Nebraska had an abysmal performance against the Illini in 2020, where Illinois put up 41 on the Blackshirts. Ironic that the defense didn’t play good when wearing the blackshirts uniform. The Huskers were never in the game after going down 28-10 in the second quarter. What a time that 2020 shorten season was.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Throwbacks <span class="ot">&lt;-</span> Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    Uniforms <span class="sc">==</span> <span class="st">"Throwbacks"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Blackshirts <span class="ot">&lt;-</span> Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    Uniforms <span class="sc">==</span> <span class="st">"Blackshirts"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>all_white <span class="ot">&lt;-</span> Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    Uniforms <span class="sc">==</span> <span class="st">"All-White"</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>everythingelse <span class="ot">&lt;-</span> Updated_Alternate_Uniforms <span class="sc">|&gt;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    Uniforms <span class="sc">==</span> <span class="st">"Alternate"</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>Updated_Alternate_Uniforms, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp), <span class="at">color=</span><span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>Throwbacks, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp), <span class="at">color=</span><span class="st">"#E41C38"</span>) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>Blackshirts, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp), <span class="at">color=</span><span class="st">"#000000"</span>) <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>all_white, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp), <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>everythingelse, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp), <span class="at">color=</span><span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data=</span>Throwbacks, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp, <span class="at">label=</span>Opponent), <span class="at">size=</span><span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data=</span>Blackshirts, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp, <span class="at">label=</span>Opponent), <span class="at">size=</span><span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data=</span>all_white, <span class="fu">aes</span>(<span class="at">x=</span>Pts, <span class="at">y=</span>Opp, <span class="at">label=</span>Opponent), <span class="at">size=</span><span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">32.61711</span>  , <span class="at">color=</span><span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">17.9425</span>   , <span class="at">color=</span><span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Team Points"</span>,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Opponent Points"</span>,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Many games did not go well for the Huskers"</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Majority of the Huskers games when they wore a a different uniform than usual are in the top left. Note:</span><span class="sc">\n</span><span class="st">Red=Throwbacks, Black=Blackshirts, Blue=All-White, Green=Everything else"</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Sports Reference CFB | By Dylan Jurgens"</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So, the questions is, does Nebraska football have itself a uniform curse. They don’t necessarily have a overall uniform curse but it is possible that they have curse with those all-white uniforms when they wear them in big games. With an overall 5-14 record since the 1966 Orange Bowl when wearing all-white speaks for itself. The Huskers also haven’t won a game with a Blackshirt variant uniform, with a record of 0-5 when doing so. So if there is any takeaway, it would be this: Nebraska should not wear the all-white and blackshirts uniforms.</p>
 
 
 
